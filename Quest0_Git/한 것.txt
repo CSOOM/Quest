@@ -1,9 +1,0 @@
-GitShell에서 한 게, GitHub 홈페이지에 올라가는지??????
-어떻게 하는 지 잘 모르겠다
-
-일단
-git config --global user.name "CSOOM"
-git config --global user.email cathycho1221@gmail.com
-git config --global color.ui true
-
-그리고 Quest 들어가서 git init을 하였다.
