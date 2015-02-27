@@ -26,8 +26,8 @@ nav{
 section{
 	position: relative;
 	left: 200px;
-	top: 100px;	
-	/* position 설멍하지 footer가 사라졌음 ㅠㅠ */
+	top: 94px;	
+	/* position 설정하니 footer가 사라졌음 ㅠㅠ */
 	background-color: #E0E0E0;
 	color: black;
 	float: left;
@@ -105,21 +105,23 @@ ul#menu li a:hover{ /* 다 채우는 걸로 */
 	<header>
 	<table id="t01"> 
 		<tr>
-			<td style="text-align: left">
-			<a href='gmail_list.html'>Google</a> <!-- home -->
-			</td>
+			<td style="width: 185px; text-align: left"> <a href='gmail_list.html'>Google</a> </td> <!-- home -->
+			<td style="text-align: left"> <input type="text" id="search" style="width: 500px"/> </td>
+			<td style="width: 20px; text-align: center"> ▒ </td>
+			<td style="width: 200px; text-align: left"> smcho@knowre.com </td>
 		</tr>
 		<tr>
-			<td style="text-align: left">
-			Gmail <!-- 드롭 다운 -->
-			</td>
+			<td style="width: 185px; text-align: left"> Gmail </td> <!-- 드롭 다운 -->
+			<td> </td>
+			<td> </td>
+			<td> </td>
 		</tr>
 	</table>
 	</header>
 <div>
 	<nav>
 		<ul id = "menu">
-			<li><span class = "button"><button type="button" style="height: 30px; background-color: red; color: white;"> 편지쓰기 </button></span><li>
+			<li><span class = "button"><button type="button" style="height: 40px; width: 100px; background-color: #FF5050; color: white;"> <strong> 편지쓰기 </strong> </button></span><li>
 			<li><a href>받은편지함 </a></li>
 			<li><a href>별표편지함 </a></li>
 			<li><a href>보낸편지함 </a></li>
@@ -164,18 +166,15 @@ ul#menu li a:hover{ /* 다 채우는 걸로 */
 			<td style = "width: 100px; text-align: center"> 2월 26일</td>
 		</tr>
 		
-		
-
-
 	</table>
 	</section>
-	
+	<footer>
+		<small>&copy2015Google - 이용약관 - 개인정보취급방침</small> 
+	</footer>
 	
 </div>
 
-<footer>
-	<small>&copy2015Google - 이용약관 - 개인정보취급방침</small> 
-</footer>
+
 
 
 
