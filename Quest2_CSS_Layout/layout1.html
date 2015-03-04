@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title> Layout1 </title>
+<style>
+html, body{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+}
+.contain{
+	width: 100%;
+	height: 100%;
+}
+/*왜 html, body, contain 다 100% 조건을 줘야 할까!*/
+.right{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 200px;
+	height: 100%;
+	background-color: #FF6600;
+}
+.center{
+	margin-left: 200px;
+	background-color: #FFCC99;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+<div class="contain">
+	<div class="right">
+	200px fixed
+	</div>
+
+	<div class="center">
+	가변
+	</div>
+</div>
+</body>
+</html>
