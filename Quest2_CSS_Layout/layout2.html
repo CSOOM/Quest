@@ -24,8 +24,17 @@ html, body{
 }
 .center{
 	margin-left: 200px;
+	margin-right: 300px;
 	background-color: #FFCC99;
 	height: 100%;
+}
+.left{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 300px;
+	height: 100%;
+	background-color: #FFFF99;
 }
 </style>
 </head>
@@ -33,11 +42,15 @@ html, body{
 <body>
 <div class="contain">
 	<div class="right">
-	200px fixed
+		200px fixed
 	</div>
 
 	<div class="center">
-	가변
+		가변
+	</div>
+
+	<div class="left">
+		300px fixed
 	</div>
 </div>
 </body>
