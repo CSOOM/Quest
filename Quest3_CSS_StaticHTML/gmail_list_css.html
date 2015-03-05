@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title> Gmail List </title>
+<link rel="stylesheet" type="text/css" href="gmail_style.css">
+</head>
+
+
+<body>
+	<header>
+	<table id="t01"> 
+		<tr>
+			<td style="width: 185px; text-align: left"> <a href='gmail_list.html'>Google</a> </td> <!-- home -->
+			<td style="text-align: left"> <input type="text" id="search" style="width: 500px"/> </td>
+			<td style="width: 300px; text-align: right"> ▒ </td>
+			<td style="width: 200px; text-align: left"> smcho@knowre.com </td>
+		</tr>
+		<tr>
+			<td style="width: 185px; text-align: left">
+				<select name="function">
+					<option value="Gmail"> Gmail </option>
+					<option value="주소록"> 주소록 </option>
+					<option value="할 일 목록"> 할 일 목록 </option>
+				</select>
+			</td>
+			<td style="text-align: left"> 
+				<select name="check" > 
+					<option value="전체선택"> 전체선택 </option>
+					<option value="선택안함"> 선택안함 </option>
+					<option value="읽음"> 읽음 </option>
+					<option value="읽지않음"> 읽지않음 </option>
+					<option value="별표"> 별표 </option>
+					<option value="별표없음"> 별표없음 </option>
+				</select>
+				<button type="button" style="width:80px; background-color: white;"> refresh </button> 
+				<select name="작업" style="width:90px">
+					<option value="추가 작업"> 추가 작업 </option>
+					<option value="모두"> 모두 읽은 상태로 표시 </option>					
+				</select>
+			</td>
+			<td>페이지 이동</td>
+			<td style="text-align: center">
+				<select name="setting">
+					<option value="환경설정"> 환경설정 </option>
+
+				</select>
+			</td>
+		</tr>
+	</table>
+	</header>
+
+	<div class="contain">
+		<nav>
+			<ul id = "menu">
+				<li><button type="button" style="height: 40px; width: 100px; background-color: #FF5050; color: white;"> <strong> 편지쓰기 </strong> </button><li>
+				<li><a class="menuu" href>받은편지함 </a></li>
+				<li><a class="menuu" href>별표편지함 </a></li>
+				<li><a class="menuu" href>보낸편지함 </a></li>
+				<li><a class="menuu" href>임시보관함 </a></li>
+				<li><a class="menuu" href>Notes </a></li>
+				<li><a class="menuu" href>더보기 </a></li> <!-- 드롭 다운 -->
+				<hr>
+				Soomin
+				<hr>
+			</ul>
+		</nav>
+
+		<section>
+		<table id = "t02">
+			<tr>
+				<td style = "width: 20px; text-align: center"> <input type="checkbox" name="chk_info" value="check"> </td>
+				<td style = "width: 20px"> ☆ </td>
+				<td style = "width: 200px"> Cathy Cho </td>
+				<td> 어떻게 해야 잘 할 수 있을까?!! </td>
+				<td style = "width: 40px"> 첨부 </td> <!-- 첨부파일 표시 -->
+				<td style = "width: 100px; text-align: center"> 14:11 </td>
+			</tr>
+			<tr>
+				<td style = "width: 20px; text-align: center"> <input type="checkbox" name="chk_info" value="check"> </td>
+				<td style = "width: 20px"> ☆ </td>
+				<td style = "width: 200px"> Gloria Lee </td>
+				<td> Which camp are you in? </td>
+				<td style = "width: 40px"> </td> <!-- 첨부파일 표시 -->
+				<td style = "width: 100px; text-align: center"> 2월 27일 </td>
+			</tr>
+			<tr>
+				<td style = "width: 20px; text-align: center"> <input type="checkbox" name="chk_info" value="check">  </td>
+				<td style = "width: 20px"> ☆ </td>
+				<td style = "width: 200px"> Gloria, David </td>
+				<td> Re: KnowRe US Weekly 02/15-02/22 (Confidential) </td>
+				<td style = "width: 40px"> </td> <!-- 첨부파일 표시 -->
+				<td style = "width: 100px; text-align: center"> 2월 27일 </td>
+			</tr>
+			<tr>
+				<td style = "width: 20px; text-align: center"> <input type="checkbox" name="chk_info" value="check">  </td>
+				<td style = "width: 20px"> ☆ </td>
+				<td style = "width: 200px"> 스타벅스  </td>
+				<td> (광고) [스타벅스] 벚꽃의 낭만이 다시 시작됩니다! </td>
+				<td style = "width: 40px"> </td> <!-- 첨부파일 표시 -->
+				<td style = "width: 100px; text-align: center"> 2월 26일</td>
+			</tr>
+			<tr>
+				<td style = "width: 20px; text-align: center"> <input type="checkbox" name="chk_info" value="check">  </td>
+				<td style = "width: 20px"> ☆ </td>
+				<td style = "width: 200px"> Gmail 팀 </td>
+				<td> Gmail과 Google Apps를 이용한 효율적인 작업 </td>
+				<td style = "width: 40px"> </td> <!-- 첨부파일 표시 -->
+				<td style = "width: 100px; text-align: center"> 2월 26일</td>
+			</tr>
+
+			
+		</table>
+
+		<footer>
+			<small>&copy2015Google - 이용약관 - 개인정보취급방침</small> 
+		</footer>
+
+		</section>
+
+		
+	</div>
+
+</body>
+</html>

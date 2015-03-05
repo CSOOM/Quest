@@ -1,0 +1,114 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	background-color: #F0F0F0; 
+	font-size: 14px;
+	margin: 0px;
+}
+
+header{ 
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+	background-color: #F0F0F0;
+	color: black;
+	text-align: right;
+	height: 100px;
+	width: 100%;
+}
+nav{
+	position: fixed;
+	left: 0px;
+	z-index: 1;
+	background-color: #F0F0F0;
+	color: black;
+	height: 100%;
+	width: 200px;
+	float: left;
+}
+section{
+	margin-left: 200px;
+	background-color: #E0E0E0;
+	color: black;
+	float: left;
+}
+footer{ /* 일정한 위치에 있다가 표에 내용이 많아지면 밑으로 내려감 : 구현하는 방법?! */
+	width: 100%;
+	background-color: #F0F0F0;
+	color: black;
+	text-align: center;
+	vertical-align: top;
+	height: 20px;
+	padding: 5px;
+}
+
+.contain{
+	position: fixed;
+	top: 100px;
+	width: 100%;
+	height: 100%;
+}
+
+#t01{
+	width: 100%;
+	border: 1px solid #B0B0B0;
+	border-collapse: collapse;
+}
+
+#t01 tr{
+	border: 1px solid #B0B0B0;
+	border-collapse: collapse;
+}
+
+#t01 td{
+	height: 40px;
+	padding: 5px;
+}
+
+#t02{
+	width: 100%;
+	border: 1px solid #B0B0B0;
+	border-collapse: collapse;
+}
+
+#t02 tr{
+	border: 1px solid #B0B0B0;
+	border-collapse: collapse;
+}
+
+#t02 td{
+	height: 30px;
+	padding: 5px;
+}
+
+
+a:link {color:#000000; background-color: transparent; text-decoration: none} 
+a:visited {color:#000000; background-color: transparent; text-decoration: none} 
+a:hover {color:#000000; background-color: transparent; text-decoration: none} 
+a:active {color:#FF5050; background-color: transparent; text-decoration: none} 
+
+
+ul#menu{
+	list-style-type: none;
+	margin-left: 30px;
+	margin-right: 10px;
+	margin-top: 10px;
+	padding: 0px;
+	vertical-align: center; /* 다시 도전! */
+}
+
+a.menuu{
+	display: block;
+	width: 160px;
+	height: 30px;
+	margin-top: 10px;
+
+}
+
+a.menuu:hover{
+	background-color: white;
+}
+
