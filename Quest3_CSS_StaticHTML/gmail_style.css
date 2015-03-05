@@ -1,43 +1,59 @@
 html, body{
 	width: 100%;
 	height: 100%;
-}
-
-body{
-	background-color: #F0F0F0; 
-	font-size: 14px;
 	margin: 0px;
 }
 
+body{
+	background-color: #EBEBEB; 
+	font-size: 14px;
+	overflow: hidden;
+}
+
 header{ 
-	position: fixed;
+	position: absolute;
 	top: 0px;
-	z-index: 1;
-	background-color: #F0F0F0;
-	color: black;
-	text-align: right;
+	right: 0;
+	left: 0;
 	height: 100px;
-	width: 100%;
+	z-index: 1;
+
+	background-color: #EBEBEB;
+	color: black;
+	text-align: right;	
+}
+.contain{
+	position: absolute;
+	top: 100px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
 }
 nav{
-	position: fixed;
+	position: absolute;
+	top: 0px;
 	left: 0px;
+	bottom: 0px;
 	z-index: 1;
-	background-color: #F0F0F0;
+	background-color: #EBEBEB;
 	color: black;
 	height: 100%;
 	width: 200px;
 	float: left;
 }
 section{
-	margin-left: 200px;
+	position: absolute;
+	left: 200px;
+	right: 0;
+	top: 0;
 	background-color: #E0E0E0;
 	color: black;
 	float: left;
 }
 footer{ /* 일정한 위치에 있다가 표에 내용이 많아지면 밑으로 내려감 : 구현하는 방법?! */
 	width: 100%;
-	background-color: #F0F0F0;
+	background-color: #EBEBEB;
 	color: black;
 	text-align: center;
 	vertical-align: top;
@@ -45,37 +61,35 @@ footer{ /* 일정한 위치에 있다가 표에 내용이 많아지면 밑으로
 	padding: 5px;
 }
 
-.contain{
-	position: fixed;
-	top: 100px;
-	width: 100%;
-	height: 100%;
+
+.top1{
+	position: absolute;
+	top: 0;
+	height: 55px;
+	left: 0;
+	right: 0;
+	border-bottom: 1px solid #B0B0B0;
+	text-align: left
 }
 
-#t01{
-	width: 100%;
-	border: 1px solid #B0B0B0;
-	border-collapse: collapse;
+.top2{
+	position: absolute;
+	top: 60px;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+	border-bottom: 1px solid #B0B0B0;
 }
 
-#t01 tr{
-	border: 1px solid #B0B0B0;
-	border-collapse: collapse;
-}
-
-#t01 td{
-	height: 40px;
-	padding: 5px;
-}
 
 #t02{
 	width: 100%;
-	border: 1px solid #B0B0B0;
 	border-collapse: collapse;
 }
 
 #t02 tr{
-	border: 1px solid #B0B0B0;
+	border-bottom: 1px solid #B0B0B0;
+	border-left: 1px solid #B0B0B0;
 	border-collapse: collapse;
 }
 
@@ -97,7 +111,7 @@ ul#menu{
 	margin-right: 10px;
 	margin-top: 10px;
 	padding: 0px;
-	vertical-align: center; /* 다시 도전! */
+	vertical-align: middle; /* 다시 도전! */
 }
 
 a.menuu{
