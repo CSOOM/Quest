@@ -9,67 +9,75 @@
 
 <body>
 	<header>
-	<div class="top1"> 
-		<div class="logo"><a href="gmail_list_css.html"><img src="image/google.png" height="55px"></a></div>
-		<div class="search">
-			<input type="text" style="width: 500px; height: 21px; padding:0px"/> 
-			<button type="sumbit" class="srchbutton" style="height: 25px"> 
-				<img src="image/search_white.png" style="height: 15px">
-			</button>
+		<div class="top1"> 
+			<div class="logo"><a href="gmail_list_css.html"><img src="image/google.png" height="55px"></a></div>
+			<div class="search">
+				<input type="text" style="width: 500px; height: 21px; padding:0px"/> 
+				<button type="sumbit" class="srchbutton" style="height: 25px"> 
+					<img src="image/search_white.png" style="height: 15px">
+				</button>
+			</div>
+			<div class="name"> 
+				<button type="submit" class="dash">
+					<img src="image/dashboard.png" style="height: 20px; width: auto">
+				</button>
+				<div class="id"> smcho@knowre.com  </div>		
+			</div>
 		</div>
-		<div class="name"> 
-			<button type="submit" class="dash"><img src="image/dashboard.png" style="height: 20px; width: auto"></button>
-			<div class="id"> smcho@knowre.com  </div>		
-		</div>
-	</div>
-	<div class="top2"> 
+		<div class="top2"> 
+			<div class="gmail">
+				<select name="function" class="select_gmail">
+						<option value="Gmail"> Gmail </option>
+						<option value="주소록"> 주소록 </option>
+						<option value="할 일 목록"> 할 일 목록 </option>
+				</select>
+			</div>
+			<div class="menu_function">
+				<div class="menu_1">
+					<select name="check" class="m_button"> 
+							<option value="전체선택"> 전체선택 </option>
+							<option value="선택안함"> 선택안함 </option>
+							<option value="읽음"> 읽음 </option>
+							<option value="읽지않음"> 읽지않음 </option>
+							<option value="별표"> 별표 </option>
+							<option value="별표없음"> 별표없음 </option>
+					</select>
+				</div>
+				<div class="menu_2">
+					<button type="button" class="m_button"> 
+						<img src="image/refresh.png" style="height: 15px; width: auto"> 
+					</button> 
+				</div>
+				<div class="menu_3">
+					<select name="작업" class="m_button">
+							<option value="추가 작업"> 추가작업 </option>
+							<option value="모두"> 모두 읽은 상태로 표시 </option>					
+					</select>
+				</div>
+			</div>
+			<div class="page">
+				<div class="page_1"> 
+					<button type="button" class="p_button" style="border-radius: 3px 0px 0px 3px"> 
+						<img src="image/page_left.png" style="height: 15px; width: auto"> 
+					</button> 
+					<button type="button" class="p_button" style="border-radius: 0px 3px 3px 0px"> 
+						<img src="image/page_right.png" style="height: 15px; width: auto"> 
+					</button> 
+				</div>
+				<div class="page_2">
+					<button type="button" class="m_button"> 
+						<img src="image/setting.png" style="height: 15px; width: auto"> 
+					</button> 
+				</div>
+			</div>
+		</div> 
 
-	</div> 
-	<!--
-		<tr>
-			<td style="width: 185px; text-align: left"> <a href='gmail_list.html'>Google</a> </td> 
-			<td style="text-align: left"> <input type="text" id="search" style="width: 500px"/> </td>
-			<td style="width: 300px; text-align: right"> ▒ </td>
-			<td style="width: 200px; text-align: left"> smcho@knowre.com </td>
-		</tr>
-		<tr>
-			<td style="width: 185px; text-align: left">
-				<select name="function">
-					<option value="Gmail"> Gmail </option>
-					<option value="주소록"> 주소록 </option>
-					<option value="할 일 목록"> 할 일 목록 </option>
-				</select>
-			</td>
-			<td style="text-align: left"> 
-				<select name="check" > 
-					<option value="전체선택"> 전체선택 </option>
-					<option value="선택안함"> 선택안함 </option>
-					<option value="읽음"> 읽음 </option>
-					<option value="읽지않음"> 읽지않음 </option>
-					<option value="별표"> 별표 </option>
-					<option value="별표없음"> 별표없음 </option>
-				</select>
-				<button type="button" style="width:80px; background-color: white;"> refresh </button> 
-				<select name="작업" style="width:90px">
-					<option value="추가 작업"> 추가 작업 </option>
-					<option value="모두"> 모두 읽은 상태로 표시 </option>					
-				</select>
-			</td>
-			<td>페이지 이동</td>
-			<td style="text-align: center">
-				<select name="setting">
-					<option value="환경설정"> 환경설정 </option>
-
-				</select>
-			</td>
-		</tr>`
-	-->
 	</header>
 
 	<div class="contain">
 		<nav>
 			<ul id = "menu">
-				<li><button type="button" style="height: 40px; width: 100px; background-color: #FF5050; color: white;"> <strong> 편지쓰기 </strong> </button><li>
+				<li><button type="button" class="letter"> <strong> 편지쓰기 </strong> </button></li>
 				<li><a class="menuu" href>받은편지함 </a></li>
 				<li><a class="menuu" href>별표편지함 </a></li>
 				<li><a class="menuu" href>보낸편지함 </a></li>
