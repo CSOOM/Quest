@@ -6,11 +6,30 @@
 </head>
 <body>
 	<script>
+	
+	function Icon(name){
+		this.name = name;
+		this.Drag = function(){}
+	}
+	function Folder(name, Window){
+		this.name = name;
+		this.window = Window;
+		this.Open = function(){}; //더블클릭하면 폴더가 열리는 함수
+		this.Click = function(){};
+	}
+	function Window(content){//열린 폴더의 창
+		this.content = content;
+	}
+	
+	Folder.prototype = new Icon(); //inherit
+	Window.prototype = new Icon(); //inherit
 
+	var window1 = new Window("Hello world");
+	var window2 = new Window("Bye world");
 
-
-
-
+	var icon1 = new Icon("chrome");
+	var icon2 = new Folder("bird", window1);
+	var icon3 = new Folder("pigeon", window2);
 
 	</script>
 </body>
