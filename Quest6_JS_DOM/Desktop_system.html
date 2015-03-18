@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Desktop System </title>
+<style>
+.background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 800px;
+	background-color: #F0F0F0; 
+}
+.chrome{
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url(image/chrome.png) no-repeat center center;
+	background-size: 100px;
+	margin: 10px;
+	border: none;
+}
+.folder{
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url(image/folder.png) no-repeat center center;
+	background-size: 100px;
+	margin: 10px;
+	border: none;
+}
+
+</style>
+</head>
+
+<body>
+<script src="Desktop_JS.js"></script>
+<div class="background" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+<div class="chrome"></div>
+<div class="folder"></div>
+<div class="folder"></div>
+
+</div>
+
+</body>
+
+
+
+</html>
