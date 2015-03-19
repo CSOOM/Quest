@@ -1,16 +1,17 @@
+
 function Icon(name){
 	this.name = name;
-	this.drag = function(){};
+	//this.drag = function(){};
 }
 function Folder(name, Window){
 	this.name = name;
 	this.window = Window;
-	this.open = function(){}; //더블클릭하면 폴더가 열리는 함수
-	this.click = function(){};
+	//this.open = function(){}; //더블클릭하면 폴더가 열리는 함수
+	//this.click = function(){};
 }
 function Window(content){//열린 폴더의 창
 	this.content = content;
-	this.drag = function(){}
+	//this.drag = function(){}
 }
 
 Folder.prototype = new Icon(); //inherit
@@ -23,14 +24,55 @@ var icon1 = new Icon("chrome");
 var icon2 = new Folder("bird", window1);
 var icon3 = new Folder("pigeon", window2);
 
+//--------------------------------------------------------------------------이전 퀘스트
 
-function drop(event) {
-    event.preventDefault();
-    //var data = event.dataTransfer.getData("Text");
-    //event.target.appendChild(document.getElementById(data));
-    //document.getElementById("demo").innerHTML = "The p element was dropped";
-}
+document.getElementById('chrome').onmousedown = function() {
+	var icon = this;
 
-function allowDrop(event) {
-    event.preventDefault();
+	document.onmousemove = function(e) {
+		e = e || event
+		icon.style.left = e.clientX-60+'px'
+		icon.style.top = e.clientY-60+'px'
+	}
+
+	this.onmouseup = function() {
+		document.onmousemove = null
+	}
+
 }
+document.getElementById('chrome').ondragstart = function() { return false }
+
+
+document.getElementById('folder1').onmousedown = function() {
+	var icon = this;
+
+	document.onmousemove = function(e) {
+		e = e || event
+		icon.style.left = e.clientX-60+'px'
+		icon.style.top = e.clientY-60+'px'
+	}
+
+	this.onmouseup = function() {
+		document.onmousemove = null
+	}
+
+}
+document.getElementById('folder1').ondragstart = function() { return false }
+
+
+document.getElementById('folder2').onmousedown = function() {
+	var icon = this
+
+	document.onmousemove = function(e) {
+		e = e || event
+		icon.style.left = e.clientX-60+'px'
+		icon.style.top = e.clientY-60+'px'
+	}
+
+	this.onmouseup = function() {
+		document.onmousemove = null
+	}
+
+}
+document.getElementById('folder2').ondragstart = function() { return false }
+
