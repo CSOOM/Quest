@@ -76,3 +76,25 @@ document.getElementById('folder2').onmousedown = function() {
 }
 document.getElementById('folder2').ondragstart = function() { return false }
 
+document.getElementById('folder1').ondblclick = function(e) {
+	var x = e.clientX;
+	var y = e.clientY;
+
+	popwin1 = window.open("","popwin1", "width=400, height=300");
+	popwin1.document.write("I am folder1");
+	popwin1.moveTo(x,y);
+	popwin1.focus();
+}
+
+document.getElementById('folder2').ondblclick = function(e) {
+	var x = e.clientX;
+	var y = e.clientY;
+
+	popwin2 = window.open("","popwin2", "width=400, height=300");
+	popwin2.document.write("I am folder2");
+	popwin2.moveTo(x,y);
+	popwin2.focus();
+}
+
+//document.getElementById('rest').ondragenter= function(){return false;}
+//배경화면 이외는 드래그 못하게 하기 
