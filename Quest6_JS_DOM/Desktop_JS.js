@@ -96,5 +96,10 @@ document.getElementById('folder2').ondblclick = function(e) {
 	popwin2.focus();
 }
 
-//document.getElementById('rest').ondragenter= function(){return false;}
+//document.getElementById('rest').ondragover= function(){return false;}
+document.getElementById('rest').ondragstart= function(){return false;}
+document.getElementById('rest').ondrag= function(){return false;}
+document.getElementById('rest').ondragend= function(){return false;}
+document.getElementById('rest').ondragenter= function(){return false;}
+
 //배경화면 이외는 드래그 못하게 하기 
