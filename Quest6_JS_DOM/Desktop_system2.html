@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Desktop System </title>
+	<style>
+	.background {
+		position: absolute;
+		width: 1024px;
+		height: 768px;
+
+		background-color: #F0F0F0; 
+	}
+
+	.icon {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+		background-repeat: no-repeat;
+		background-position: left top;
+		background-size: 100px;
+		border: none;
+	}
+
+	.icon.chrome {
+		background-image: url(image/chrome.png);
+	}
+
+	.icon.folder {
+		background-image: url(image/folder.png);
+	}
+
+	/*#rest{
+		position: absolute;
+		top: 800px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}*/
+	</style>
+	<script src="Desktop_JS2.js"></script>
+</head>
+
+<body>
+	<div class="background"></div>
+
+	<!-- <div id="rest"> </div> -->
+	<script>
+		window.desktop = new Desktop(document.querySelectorAll('.background')[0]);
+
+		desktop.addIcon(new Icon(desktop, 'chrome'));
+		desktop.addIcon(new Icon(desktop, 'folder'));
+		desktop.addIcon(new Icon(desktop, 'folder'));
+	</script>
+</body>
+
+
+
+</html>
