@@ -7,21 +7,45 @@
 
 <body>
 <script>
+/*
 var obj = {
 	strTexts : " 은 정말 몸에 좋아요 ^^ ",
 	registerEvents : function(event){
-		console.log(event.target.innerHTML+this.strTexts);
+		//console.log(event.target.innerHTML+this.strTexts); //내 답
+		
 	}
 };
+*/
+
+
 </script>
 
+<ul>
+	<li>선식</li>
+	<li>토마토</li>
+	<li>마늘</li>
+</ul>
+<!--
 <ul onclick="obj.registerEvents(event)">
 	<li>선식</li>
 	<li>토마토</li>
 	<li>마늘</li>
 </ul>
-
-
-
+-->
 </body>
+
+<script>
+
+var lis = document.querySelectorAll('li');
+	for(var i = 0; i < lis.length; i++) {
+	    (function(j) {
+	    	lis[j].onclick = function(e) {
+		        console.log(lis[j].innerHTML + " 은 정말 몸에 좋아요 ^^");
+		    };
+		})(i);
+	}
+
+</script>
+
+
 </html>
