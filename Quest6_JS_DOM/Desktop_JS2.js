@@ -55,6 +55,8 @@ _._bindEvents = function() {
 	};
 
 	this.dom.onmousemove = function(e) {
+		e.preventDefault(); 
+
 		if(!that.isMouseDown) return;
 
 		var delta = [e.clientX - that.mCoordNow[0], e.clientY - that.mCoordNow[1]];
@@ -113,6 +115,8 @@ _._bindEvents = function(){
 	};
 
 	this.dom.onmousemove = function(e) {
+		e.preventDefault(); 
+		
 		if(!that.isMouseDown) return;
 
 		var delta = [e.clientX - that.mCoordNow[0], e.clientY - that.mCoordNow[1]];
