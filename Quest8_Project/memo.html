@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> My Memo </title>
+	<link rel="stylesheet" type="text/css" href="memo.css">
+	<script src="memo.js"></script>
+</head>
+
+<body>
+	<div class="title"> 
+		<h> 메모장 </h> 
+		<div class="addCate">
+			<p class="addCate text">카테고리추가</p>
+			<input type="text" class="addCate name" value=" Name"> 
+			<input type="text" class="addCate color" value=" Color"> 
+			<button class="addCate button"><img src="image/plus_color.png" class="addCate img"></button>
+		</div>
+	</div>
+	<div class="background">
+
+	</div>
+
+	<script>
+		window.back = new Background(document.querySelectorAll('.background')[0]);
+		window.addfunc = new Button_addCategory(back, document.getElementsByClassName("addCate botton"));
+		back.addCategory(new Category(back, '기본',  '#ffbb99'));
+		back.addCategory(new Category(back, '할 일',  '#f8df9d'));
+		back.addCategory(new Category(back, '아이디어',  '#caf1a1'));
+		back.addCategory(new Category(back, '정보',  '#a1caf1'));
+
+
+
+
+	</script>
+</body>
+
+
+</html>-
