@@ -1,3 +1,5 @@
+var dragMemo;
+
 var Background = function(dom) {
 	this.dom = dom;
 	this.categories = [];
@@ -62,10 +64,40 @@ _._setDom = function(){
 
 _._bindEvents = function(){
 	var that = this;
+
+
+	this.dom.ondragover = function(e){
+		e.preventDefault();
+	};
+
+	this.dom.ondrop = function(e){
+		e.preventDefault();
+		console.log(dragMemo);
+		dragMemo.category.deleteMemo(dragMemo);
+		dragMemo.category.dom.removeChild(dragMemo.dom);
+		that.addMemo(dragMemo);
+		that.dom.appendChild(dragMemo.dom);
+		e.stopPropagation();
+	};
 }
 
 _.addMemo = function(memo){
+	memo.category = this;
+	memo.dom.style.left = (memo.category.memo.length % 2) * 290 + 20 + 'px';
+	memo.dom.style.top = Math.floor(memo.category.memo.length / 2) * 360 + 45 + 'px';
 	this.memo.push(memo);
+};
+
+_.deleteMemo = function(memo){
+	for(i=0;i<this.memo.length;i++){
+		if(this.memo[i]==memo){
+			this.memo.splice(i,1);
+			for(j=i;j<this.memo.length;j++){
+				this.memo[j].dom.style.left = (j % 2) * 290 + 20 + 'px';
+				this.memo[j].dom.style.top = Math.floor(j / 2) * 360 + 45 + 'px';
+			}
+		}
+	}
 };
 
 var Button_addMemo = function(category){
@@ -100,7 +132,6 @@ var Memo = function(category, title, content){
 	this.category = category;
 	this.title = title;
 	this.content = content;
-
 	this._initialize();
 };
 
@@ -114,8 +145,6 @@ _._initialize = function(){
 _._setDom = function(){
 	this.dom = document.createElement('div');
 	this.dom.className = 'memo';
-	this.dom.style.left = (this.category.memo.length % 2) * 290 + 20 + 'px';
-	this.dom.style.top = Math.floor(this.category.memo.length / 2) * 360 + 45 + 'px';
 	this.category.dom.appendChild(this.dom);
 
 	var title = document.createElement('input');
@@ -133,7 +162,23 @@ _._setDom = function(){
 
 _._bindEvents = function(){
 	var that = this;
+	var title_dom = this.dom.firstChild;
+	var content_dom = this.dom.lastChild;
 
+	title_dom.onblur = function(){
+		that.title = this.value;
+	};
+
+	content_dom.onblur = function(){
+		that.content = this.value;
+	};
+
+	this.dom.draggable = true;
+
+	this.dom.ondragstart = function(){
+		dragMemo = that;
+	};
 
 };
+
 
