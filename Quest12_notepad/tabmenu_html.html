@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Tabmenu </title>
+
+	<script type="text/javascript">
+	<!--
+	function ShowTab(val){
+	  for (i=0; i<3; i++) {
+	    var tb = document.getElementById('tab_' + i);
+	    if (i != val) tb.style.display = "none";
+	    else tb.style.display = "block";
+	  }
+	}
+	//-->
+	</script>
+	<!-- <script src="memo.js"></script> -->
+</head>
+
+<body>
+
+
+<div class="tabmenuWrap">	
+	<div class="tabmenu">
+		
+		<div onclick="ShowTab('0')" style="background-color: red; border: 1px solid white; width: 150px; cursor: pointer; float: left; border-radius: 10px 10px 0px 0px;">관련 글 </div>
+		<div onclick="ShowTab('1')" style="background-color: red; border: 1px solid white; width: 150px; cursor: pointer; float: left; border-radius: 10px 10px 0px 0px;">최신 글 </div>
+		<input type="text" onclick="ShowTab('2')" style="background-color: red; border: 1px solid white; width: 150px; cursor: pointer; float: left; border-radius: 10px 10px 0px 0px;" value="추천글"/> 
+	</div>
+	<div class="tabmenuBot" style="position: absolute; top: 100px;">
+		<div id="tab_0" style="width: 100%; display: block;">
+			관련글은 여기넣고 
+			여기에 광고를 넣고 싶으면 넣고
+		</div>
+		<div id="tab_1" style="width: 100%; display: none;">
+			최신글은 여기넣고
+		</div>
+		<div id="tab_2" style="width: 100%; display: none;">
+			추천글은 여기넣고
+			광고를 또 넣고 싶으면 여기넣고
+		</div>
+	</div>
+</div>
+
+</body>
+
+
+</html>

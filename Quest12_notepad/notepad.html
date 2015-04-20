@@ -4,7 +4,7 @@
 	<meta charset="utf-8"/>
 	<title> Notepad </title>
 	<link rel="stylesheet" type="text/css" href="style.css"> 
-	<!-- <script src="memo.js"></script> -->
+	<script src="tabnote.js"></script>
 </head>
 
 <body>
@@ -19,9 +19,20 @@
 			<li> 2번 룰루 </li>
 		</ul>
 	</div>
-	<div class="content">
+	<div class="tabmemo">
+		<div class="tabtitle">
 
+		</div>
+		<div class="tabcontent">
+
+		</div>
 	</div>
+	<script>
+		window.tabmemo = new Tabmemo(document.querySelectorAll('.tabmemo')[0]);
+		tabmemo.addmemo(new MemoContent(tabmemo, "Tab1 Content hahaha"), new MemoTitle(tabmemo, "Tab1"));
+		tabmemo.addmemo(new MemoContent(tabmemo, "Tab2 Content hahahaha"), new MemoTitle(tabmemo, "Tab2"));
+		tabmemo.addmemo(new MemoContent(tabmemo, "Tab3 Content hahahahahaha"), new MemoTitle(tabmemo, "Tab3"));
+	</script>
 </body>
 
 
