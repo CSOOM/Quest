@@ -8,6 +8,18 @@ function route(handle, pathname, response, postData) {
 	    	response.write(data);
 	    	response.end();
 		});
+	} else if(pathname==='/tabnote.js'){
+		fs.readFile('tabnote.js', function(error, data){
+			response.writeHead(200, {"Content-Type": "text/javascript"});
+	    	response.write(data);
+	    	response.end();
+		});
+	} else if(pathname==='/tabnote_function.js'){
+		fs.readFile('tabnote_function.js', function(error, data){
+			response.writeHead(200, {"Content-Type": "text/javascript"});
+	    	response.write(data);
+	    	response.end();
+		});
 	} else if (typeof handle[pathname] === 'function') {
 		handle[pathname](response, postData);
 	} else {

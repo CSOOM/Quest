@@ -6,6 +6,7 @@ var handle = {}
 handle["/"] = requestHandlers.start;
 handle["/start"] = requestHandlers.start;
 handle["/load"] = requestHandlers.load;
+handle["/fileload"] = requestHandlers.fileload;
 handle["/save"] = requestHandlers.save;
 
 server.start(router.route, handle);

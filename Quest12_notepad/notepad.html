@@ -11,13 +11,10 @@
 	<div class="menu">
 		<button id="load" action="/load"> LOAD </button> 
 		<button id="newfile"> NEW </button> 
-		<button id="save" type="submit" action="/save"> SAVE </button> 
+		<button id="save" type="submit"> SAVE </button> 
 	</div>
 	<div class="filelist">
-		<ul id="files">
-			<li> 1번 룰루 </li>
-			<li> 2번 룰루 </li>
-		</ul>
+		<ul id="files">	</ul>
 	</div>
 	<div class="tabmemo">
 		<div class="tabtitle">
@@ -27,12 +24,7 @@
 
 		</div>
 	</div>
-	<script>
-		window.tabmemo = new Tabmemo(document.querySelectorAll('.tabmemo')[0]);
-		tabmemo.addmemo(new MemoContent(tabmemo, "Tab1 Content hahaha"), new MemoTitle(tabmemo, "Tab1"));
-		tabmemo.addmemo(new MemoContent(tabmemo, "Tab2 Content hahahaha"), new MemoTitle(tabmemo, "Tab2"));
-		tabmemo.addmemo(new MemoContent(tabmemo, "Tab3 Content hahahahahaha"), new MemoTitle(tabmemo, "Tab3"));
-	</script>
+	<script src="tabnote_function.js"></script>
 </body>
 
 
