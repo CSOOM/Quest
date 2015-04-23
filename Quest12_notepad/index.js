@@ -8,5 +8,6 @@ handle["/start"] = requestHandlers.start;
 handle["/load"] = requestHandlers.load;
 handle["/fileload"] = requestHandlers.fileload;
 handle["/save"] = requestHandlers.save;
+handle["/save_title_changed"] = requestHandlers.save_title_changed;
 
 server.start(router.route, handle);

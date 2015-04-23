@@ -11,10 +11,25 @@ _.addmemo = function(memocontent, memotitle){
 	this.memotitles.push(memotitle);
 };
 
-var MemoTitle = function(tabmemo, title){
+setColor = function(tabmemo){
+	var num = tabmemo.memotitles.length;
+	for ( i = 0 ; i < num ; i++) {
+	    var tab = document.getElementsByClassName('title');	  
+	    if (i != num-1 ){ 
+	    	tab[i].className = "title"
+		} else {
+			tab[i].className = "title clicked"
+		}
+	}
+};
+
+
+var MemoTitle = function(tabmemo, title, newflag){
 	this.tabmemo = tabmemo;
 	this.title = title;
+	this.newflag = newflag;
 	this.number = this.tabmemo.memotitles.length;
+	this.pretitle;
 
 	this._initialize();
 };
@@ -40,6 +55,7 @@ _._bindEvents = function(){
 	var that = this;
 
 	this.dom.onblur = function(){
+		that.pretitle = that.title;
 		that.title = this.value;
 	};
 
@@ -91,7 +107,8 @@ _._bindEvents = function(){
 	};
 };
 
-var FileName = function(filename){
+var FileName = function(tabmemo, filename){
+	this.tabmemo = tabmemo;
 	this.filename = filename;
 
 	this._initialize();
@@ -117,21 +134,20 @@ _._bindEvents = function(){
 	var that = this;
 
 	this.dom.ondblclick = function(){ //해당 파일 load
-		console.log(that.filename);
 		var request = new XMLHttpRequest;
 		request.onreadystatechange = function(){
 			if(request.readyState === 4 && request.status === 200){
 				var data = request.responseText;
-				var tabmemo = document.getElementsByClassName('tabmemo')[0];
-				tabmemo.addMemo(new MemoContent(tabmemo, data), new MemoTitle(tabmemo, that.filename));
+				that.tabmemo.addmemo(new MemoContent(that.tabmemo, data), new MemoTitle(that.tabmemo, that.filename, false));
+				setColor(that.tabmemo);
 			}
 		}
 		request.open("POST", "http://localhost:8888/fileload", true);
 		request.setRequestHeader("Content-Type", "text/plain");
 		request.send(that.filename);
 	};
-}
+};
 
 
-//save: display가 block인 것을 저장!
+
 
