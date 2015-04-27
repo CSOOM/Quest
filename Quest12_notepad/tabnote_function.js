@@ -9,7 +9,7 @@ var load = function(){
 			var data = request.responseText;
 			var dataArray = data.split(',');
 			for ( i = 0 ; i < dataArray.length ; i++ ){
-				new FileName(tabmemo, dataArray[i]);
+				new FileName(tabmemo, dataArray[i], false);
 			}
 		}
 	};
@@ -37,55 +37,38 @@ SaveButton.onclick = function(){
 	var memocontent;
 	for( i = 0 ; i < tabmemo.memotitles.length; i++){
 		if(tabmemo.memotitles[i].dom.className === "title clicked"){
-
 			memotitle = tabmemo.memotitles[i];
 			memocontent = tabmemo.memocontents[i];
 		}
 	}
 
-	if(memotitle.newflag || (memotitle.pretitle === memotitle.title)){
-
+	if(memotitle.newflag || (memotitle.pretitle === memotitle.title) || (memotitle.pretitle === "default") ){
+		var data = "title="+memotitle.title+"&content="+memocontent.content;
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function(){
 			if(request.readyState === 4 && request.status === 200){
-				
-
+				if(memotitle.newflag){
+					memotitle.newflag = false;
+					new FileName(tabmemo, memotitle.title, true);
+				}
 			}
 		};
-
 		request.open("POST", "http://localhost:8888/save", true);
-		request.setRequestHeader("Content-Type", "text/plain");
-		request.send(memotitle.title &  memocontent.content);
-
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send(data);
 	}else{
-
+		var data = "pretitle="+memotitle.pretitle+"&title="+memotitle.title+"&content="+memocontent.content;
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function(){
 			if(request.readyState === 4 && request.status === 200){
-				
-
+				deleteFileName(memotitle.pretitle);
+				new FileName(tabmemo, memotitle.title, true);
 			}
 		};
-
 		request.open("POST", "http://localhost:8888/save_title_changed", true);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send("pretitle=memotitle.pretitle & title=memotitle.title & content=memocontent.content");
-		//post data 보내는 방법, 받는 방법 !!!!!!!!!!!!!!!!!!!!
-
+		request.send(data);
 	}
 
-/*
-	var request = new XMLHttpRequest();
-	request.onreadystatechange = function(){
-		if(request.readyState === 4 && request.status === 200){
-			
-
-		}
-	};
-
-	request.open("POST", "http://localhost:8888/save", true);
-	request.setRequestHeader("Content-Type", "text/plain");
-	request.send(memotitle.title &  memocontent.content);
-*/
 };
 

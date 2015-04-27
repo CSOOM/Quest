@@ -20,6 +20,12 @@ function route(handle, pathname, response, postData) {
 	    	response.write(data);
 	    	response.end();
 		});
+	} else if(pathname==='/logo.png'){
+		fs.readFile('logo.png', function(error, data){
+			response.writeHead(200, {"Content-Type": "image/png"});
+	    	response.write(data);
+	    	response.end();
+		});
 	} else if (typeof handle[pathname] === 'function') {
 		handle[pathname](response, postData);
 	} else {

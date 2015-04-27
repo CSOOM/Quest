@@ -11,7 +11,7 @@ _.addmemo = function(memocontent, memotitle){
 	this.memotitles.push(memotitle);
 };
 
-setColor = function(tabmemo){
+var setColor = function(tabmemo){
 	var num = tabmemo.memotitles.length;
 	for ( i = 0 ; i < num ; i++) {
 	    var tab = document.getElementsByClassName('title');	  
@@ -29,7 +29,7 @@ var MemoTitle = function(tabmemo, title, newflag){
 	this.title = title;
 	this.newflag = newflag;
 	this.number = this.tabmemo.memotitles.length;
-	this.pretitle;
+	this.pretitle = "default";
 
 	this._initialize();
 };
@@ -107,10 +107,10 @@ _._bindEvents = function(){
 	};
 };
 
-var FileName = function(tabmemo, filename){
+var FileName = function(tabmemo, filename, intab){
 	this.tabmemo = tabmemo;
 	this.filename = filename;
-
+	this.intab = intab;
 	this._initialize();
 };
 
@@ -134,20 +134,47 @@ _._bindEvents = function(){
 	var that = this;
 
 	this.dom.ondblclick = function(){ //해당 파일 load
-		var request = new XMLHttpRequest;
-		request.onreadystatechange = function(){
-			if(request.readyState === 4 && request.status === 200){
-				var data = request.responseText;
-				that.tabmemo.addmemo(new MemoContent(that.tabmemo, data), new MemoTitle(that.tabmemo, that.filename, false));
-				setColor(that.tabmemo);
+		if(that.intab){
+			for ( i = 0 ; i < that.tabmemo.memotitles.length ; i++) {
+			    var tab = document.getElementsByClassName('title');	  
+			    var content = document.getElementById('tab_' + i);	
+
+			    if (tab[i].value === that.filename ){ 
+			    	console.log("intab");
+			    	tab[i].className = "title clicked"
+					content.style.display = "block"; 	
+				} else {
+					tab[i].className = "title"
+			    	content.style.display = "none";
+				}
 			}
+		}else{
+			var request = new XMLHttpRequest;
+			request.onreadystatechange = function(){
+				if(request.readyState === 4 && request.status === 200){
+					var data = request.responseText;
+					that.tabmemo.addmemo(new MemoContent(that.tabmemo, data), new MemoTitle(that.tabmemo, that.filename, false));
+					setColor(that.tabmemo);
+					that.intab = true;
+				}
+			}
+			request.open("POST", "http://localhost:8888/fileload", true);
+			request.setRequestHeader("Content-Type", "text/plain");
+			request.send(that.filename);
 		}
-		request.open("POST", "http://localhost:8888/fileload", true);
-		request.setRequestHeader("Content-Type", "text/plain");
-		request.send(that.filename);
 	};
 };
 
-
+var deleteFileName = function(filename){
+	var filelist = document.getElementsByClassName('filename');
+	var files = document.getElementById("files");
+	for (i = 0 ; i < filelist.length ; i++){
+		console.log(filelist[i]);
+		if(filelist[i].innerHTML === filename){
+			console.log("delete");
+			files.removeChild(filelist[i]);
+		}
+	}
+};
 
 
