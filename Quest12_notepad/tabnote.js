@@ -1,3 +1,88 @@
+var Page = function(tabmemo, newbutton, savebutton){
+	this.tabmemo = tabmemo;
+	this.newbutton = newbutton;
+	this.savebutton = savebutton;
+
+	this._initialize();
+};
+
+var _ = Page.prototype;
+
+_.load = function(){
+	var that = this;
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function(){
+		if(request.readyState === 4 && request.status === 200){
+			var data = request.responseText;
+			var dataArray = data.split(',');
+			for ( i = 0 ; i < dataArray.length ; i++ ){
+				new FileName(that.tabmemo, dataArray[i], false);
+			}
+		}
+	};
+
+	request.open("GET", "http://localhost:8888/load", true);
+	request.send(null);
+};
+
+_._initialize = function(){
+	this._bindEvents();
+};
+
+_._bindEvents = function(){
+	var that = this;
+
+	this.newbutton.onclick = function(){
+		that.tabmemo.addmemo(new MemoContent(that.tabmemo, "Content"), new MemoTitle(that.tabmemo, "Title", true));
+		that.tabmemo.setColor();
+	};
+
+
+	this.savebutton.onclick = function(){
+		console.log("save");
+		var memotitle;
+		var memocontent;
+		for( i = 0 ; i < that.tabmemo.memotitles.length; i++){
+			if(that.tabmemo.memotitles[i].dom.className === "title clicked"){
+				memotitle = that.tabmemo.memotitles[i];
+				memocontent = that.tabmemo.memocontents[i];
+			}
+		}
+
+		if(memotitle.newflag || (memotitle.pretitle === memotitle.title) || (memotitle.pretitle === "default") ){
+			var data = "title="+memotitle.title+"&content="+memocontent.content;
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function(){
+				if(request.readyState === 4 && request.status === 200){
+					if(memotitle.newflag){
+						memotitle.newflag = false;
+						new FileName(that.tabmemo, memotitle.title, true);
+					}
+				}
+			};
+			request.open("POST", "http://localhost:8888/save", true);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send(data);
+		}else{
+			var data = "pretitle="+memotitle.pretitle+"&title="+memotitle.title+"&content="+memocontent.content;
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function(){
+				if(request.readyState === 4 && request.status === 200){
+					that.tabmemo.deleteFileName(memotitle.pretitle);
+					new FileName(that.tabmemo, memotitle.title, true);
+				}
+			};
+			request.open("POST", "http://localhost:8888/save_title_changed", true);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send(data);
+		}
+
+	};
+
+};
+
+
+
 var Tabmemo = function(dom){
 	this.dom = dom;
 	this.memotitles = [];
@@ -11,14 +96,26 @@ _.addmemo = function(memocontent, memotitle){
 	this.memotitles.push(memotitle);
 };
 
-var setColor = function(tabmemo){
-	var num = tabmemo.memotitles.length;
+_.setColor = function(){
+	var num = this.memotitles.length;
 	for ( i = 0 ; i < num ; i++) {
 	    var tab = document.getElementsByClassName('title');	  
 	    if (i != num-1 ){ 
 	    	tab[i].className = "title"
 		} else {
 			tab[i].className = "title clicked"
+		}
+	}
+};
+
+_.deleteFileName = function(filename){
+	var filelist = document.getElementsByClassName('filename');
+	var files = document.getElementById("files");
+	for (i = 0 ; i < filelist.length ; i++){
+		console.log(filelist[i]);
+		if(filelist[i].innerHTML === filename){
+			console.log("delete");
+			files.removeChild(filelist[i]);
 		}
 	}
 };
@@ -140,7 +237,6 @@ _._bindEvents = function(){
 			    var content = document.getElementById('tab_' + i);	
 
 			    if (tab[i].value === that.filename ){ 
-			    	console.log("intab");
 			    	tab[i].className = "title clicked"
 					content.style.display = "block"; 	
 				} else {
@@ -153,8 +249,9 @@ _._bindEvents = function(){
 			request.onreadystatechange = function(){
 				if(request.readyState === 4 && request.status === 200){
 					var data = request.responseText;
+
 					that.tabmemo.addmemo(new MemoContent(that.tabmemo, data), new MemoTitle(that.tabmemo, that.filename, false));
-					setColor(that.tabmemo);
+					that.tabmemo.setColor();
 					that.intab = true;
 				}
 			}
@@ -163,18 +260,6 @@ _._bindEvents = function(){
 			request.send(that.filename);
 		}
 	};
-};
-
-var deleteFileName = function(filename){
-	var filelist = document.getElementsByClassName('filename');
-	var files = document.getElementById("files");
-	for (i = 0 ; i < filelist.length ; i++){
-		console.log(filelist[i]);
-		if(filelist[i].innerHTML === filename){
-			console.log("delete");
-			files.removeChild(filelist[i]);
-		}
-	}
 };
 
 

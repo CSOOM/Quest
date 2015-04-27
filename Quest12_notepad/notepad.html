@@ -24,7 +24,11 @@
 
 		</div>
 	</div>
-	<script src="tabnote_function.js"></script>
+	<script>
+		window.page = new Page(new Tabmemo(document.querySelectorAll('.tabmemo')[0]), document.getElementById('newfile'), document.getElementById('save'));
+
+		window.onload = page.load();
+	</script>
 </body>
 
 
