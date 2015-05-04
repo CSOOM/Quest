@@ -26,7 +26,6 @@ http.createServer(function (request, response){
 
 	});
 
-
 }).listen(2222, function(){
 	console.log("Server Running at http://localhost:2222");
 });
