@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Library System </title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+<!--	<script src="tabnote.js"></script>
+-->
+</head>
+
+<body>
+	<div class="header"> LIBRARY </div>
+	<div class="search">
+		<p>SEARCH</p>
+		<form action="/search" method="POST">
+			<table>
+				<tr>
+					<td class="label"><label> 제목 </label></td>
+					<td><input type="text" name="title" value="전체"/></td>
+				</tr>
+				<tr>
+					<td class="label"><label> 저자 </label></td>
+					<td><input type="text" name="author" value="전체"/></td>
+				</tr>
+				<tr>
+					<td class="label"><label> 출판사 </label></td>
+					<td><input type="text" name="publisher" value="전체"/></td>
+				</tr>
+			</table>
+
+			<div class="button location">
+				<button type="sumbit" class="search button"> 
+					<img src="search_white.png">
+				</button>
+			</div>			
+		</form>
+	</div>
+	<div class="data">
+		<table class="list">
+			<tr>
+				<th>ID</th>
+				<th>제목</th>
+				<th>저자</th>
+				<th>출판사</th>
+				<th>대출기록</th>
+			</tr>
+			<% data.forEach(function (item, index) { %>
+			<tr>
+				<td><%= item.bid %></td>
+				<td><%= item.title %></td>
+				<td><%= item.author %></td>
+				<td><%= item.publisher %></td>
+				<td><a href = "/record/<%= item.bid %>">보기</a></td>
+			</tr>
+			<% }); %>
+		</table>
+	</div>
+</body>
+
+
+</html>
