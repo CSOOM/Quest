@@ -45,11 +45,11 @@
 				<th>대출기록</th>
 			</tr>
 			<% data.forEach(function (item, index) { %>
-			<tr>
-				<td><%= item.bid %></td>
-				<td><%= item.title %></td>
-				<td><%= item.author %></td>
-				<td><%= item.publisher %></td>
+			<tr>				
+				<td><%= item.b.bid %></td>
+				<td><%= item.b.title %></td>
+				<td><%= item.a.name %></td>
+				<td><%= item.b.publisher %></td>
 				<td><a href = "/record/<%= item.bid %>">보기</a></td>
 			</tr>
 			<% }); %>

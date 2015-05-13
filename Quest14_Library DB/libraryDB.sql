@@ -30,4 +30,7 @@ CREATE TABLE RecordList(
 );
 
 
-
+SELECT b.bid, b.title, a.name, b.publisher
+FROM Book b, Author a, Writes w
+WHERE b.bid = w.bid AND w.aid = a.aid
+ORDER BY b.bid;
