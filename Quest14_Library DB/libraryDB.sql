@@ -34,3 +34,14 @@ SELECT b.bid, b.title, a.name, b.publisher
 FROM Book b, Author a, Writes w
 WHERE b.bid = w.bid AND w.aid = a.aid
 ORDER BY b.bid;
+
+SELECT b.bid, b.title, a.name, b.publisher 
+FROM Book b, Author a, Writes w 
+WHERE b.bid = w.bid AND w.aid = a.aid 
+AND b.title LIKE ? AND a.name LIKE ? AND b.publisher LIKE ?
+ORDER BY b.bid;
+
+SELECT rid, personName, timeLend, timeReturn 
+FROM RecordList 
+WHERE bid = ? 
+ORDER BY rid;

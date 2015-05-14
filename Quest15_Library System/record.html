@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Library System </title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+
+<body>
+	<div class="header"> LIBRARY </div>
+	<div class="bookinform">
+		<p>대출/반납 기록</p>
+		<table class="book">
+			<tr>
+				<th>ID</th>
+				<th>제목</th>
+				<th>저자</th>
+				<th>출판사</th>
+			</tr>
+			<tr>				
+				<td><%= book.bid %></td>
+				<td><%= book.title %></td>
+				<td><%= book.name %></td>
+				<td><%= book.publisher %></td>
+			</tr>
+		</table>
+		
+	</div>
+	<div class="record">
+		
+		<table class="recordList">
+			<tr>
+				<th>Record ID</th>
+				<th>빌린 사람</th>
+				<th>대출 시각</th>
+				<th>반납 시각</th>
+			</tr>
+			<% record.forEach(function (item, index) { %>
+			<tr>				
+				<td><%= item.rid %></td>
+				<td><%= item.personName %></td>
+				<td><%= item.timeLend %></td>
+				<td><%= item.timeReturn %></td>
+			</tr>
+			<% }); %>
+		</table>
+	
+	</div>
+</body>
+
+
+</html>
