@@ -12,6 +12,11 @@
 	vertical-align: middle;
 }
 
+.header a{
+	text-decoration: none;
+	color: black;
+}
+
 .search{
 	position: absolute;
 	top: 90px;
@@ -218,4 +223,58 @@ td>input{
 
 .recordList th:nth-child(4){
 	width: 30%;
+}
+
+.buttons{
+	position: absolute;
+	bottom: 100px;
+	left: 10%;
+}
+
+
+.record>form{
+	position: relative;
+	left: 10%;
+}
+
+.return.button{
+	background-color: #e84263;
+	width: 100px;
+	height: 40px;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: white;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.lend.button{
+	background-color: #42b6e8;
+	width: 100px;
+	height: 40px;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: white;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.button.table{
+	width: 500px;
+}
+
+.button.table td{
+	height: 50px;
+}
+
+.button.table td:nth-child(1){
+	width: 130px;
+}
+
+.button.table td:nth-child(2){
+	width: 50px;
+	font-size: 17px;
+	vertical-align: middle;
 }

@@ -105,22 +105,71 @@ app.get('/record', function (request, response) {
 	fs.readFile('record.html', 'utf8', function (error, data) {
         db.query(query3, request.query['id'], function (error, result) {
         	db.query(query4, request.query['id'], function (error, results) {
-	        	console.log(results);
 	            response.send(ejs.render(data, {
 	            	book: result[0],
 	                record: results
 	            }));
 	        });
         });
-/*
-        db.query(query4, request.query['id'], function (error, results) {
-        	console.log(results);
-            ejs.render(data, {
-                record: results
-            });
-        });
-*/
+    });
 
+});
+
+app.get('/lend', function (request, response) {
+	var query3 = "SELECT b.bid, b.title, a.name, b.publisher "
+		+ "FROM Book b, Author a, Writes w "
+		+ "WHERE b.bid = w.bid AND w.aid = a.aid AND b.bid = ? "
+		+ "ORDER BY b.bid;";
+
+	var query4 = "SELECT rid, personName, timeLend, timeReturn "
+		+ "FROM RecordList "
+		+ "WHERE bid = ? "
+		+ "ORDER BY rid;";
+
+	var query5 = "INSERT INTO RecordList(personName, bid, timeLend) "
+			+"VALUES (?, ?, NOW());";
+
+	db.query(query5, [request.query['name'], request.query['id']]);
+
+
+	fs.readFile('record.html', 'utf8', function (error, data) {
+        db.query(query3, request.query['id'], function (error, result) {
+        	db.query(query4, request.query['id'], function (error, results) {
+	            response.send(ejs.render(data, {
+	            	book: result[0],
+	                record: results
+	            }));
+	        });
+        });
+    });
+
+});
+
+app.get('/return', function (request, response) {
+	var query3 = "SELECT b.bid, b.title, a.name, b.publisher "
+		+ "FROM Book b, Author a, Writes w "
+		+ "WHERE b.bid = w.bid AND w.aid = a.aid AND b.bid = ? "
+		+ "ORDER BY b.bid;";
+
+	var query4 = "SELECT rid, personName, timeLend, timeReturn "
+		+ "FROM RecordList "
+		+ "WHERE bid = ? "
+		+ "ORDER BY rid;";
+
+	var query5 = "UPDATE RecordList SET timeReturn = NOW() WHERE personName = ? AND bid = ?;";
+
+	db.query(query5, [request.query['name'], request.query['id']]);
+
+
+	fs.readFile('record.html', 'utf8', function (error, data) {
+        db.query(query3, request.query['id'], function (error, result) {
+        	db.query(query4, request.query['id'], function (error, results) {
+	            response.send(ejs.render(data, {
+	            	book: result[0],
+	                record: results
+	            }));
+	        });
+        });
     });
 
 });

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<div class="header"> LIBRARY </div>
+	<div class="header"><a href="http://localhost:2222"> LIBRARY </a></div>
 	<div class="bookinform">
 		<p>대출/반납 기록</p>
 		<table class="book">
@@ -27,7 +27,7 @@
 		
 	</div>
 	<div class="record">
-		
+
 		<table class="recordList">
 			<tr>
 				<th>Record ID</th>
@@ -44,7 +44,29 @@
 			</tr>
 			<% }); %>
 		</table>
-	
+
+		<div class="buttons">
+			<form action="/lend" method="GET">
+				<table class="button table">
+					<tr>
+						<td><button type="sumbit" class="lend button">대출 하기</button></td>
+						<td> 이름 :</td>
+						<td><input type="text" name="name" value="대출하는 사람"/></td>
+					</tr>
+				</table>
+				<input type="hidden" name="id" value=<%=book.bid%>/>
+			</form>
+			<form action="/return" method="GET">
+				<table class="button table">
+					<tr>
+						<td><button type="sumbit" class="return button">반납 하기</button></td>
+						<td> 이름 :</td>
+						<td><input type="text" name="name" value="반납하는 사람"/></td>
+					</tr>
+				</table>
+				<input type="hidden" name="id" value=<%=book.bid%>/>
+			</form>
+		</div>
 	</div>
 </body>
 
