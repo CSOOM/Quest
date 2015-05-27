@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> Sketch Board </title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<script src="function.js"></script>
+</head>
+
+<body>
+	<div class="header">
+		<h1>Sketch Board</h1>
+	</div>
+	
+	<div class="nav">
+		<div class="menu">
+			<h2>원</h2>
+			<table>
+				<tr>
+					<td><label> 반지름: </label></td>
+					<td><input type="text" id="r" value="0"/></td>
+				</tr>
+			</table>
+			<button type="submit" id="circle"> 만들기 </button>
+		</div>
+		<div class="menu">
+			<h2>사각형</h2>
+			<table>
+				<tr>
+					<td><label> 밑변: </label></td>
+					<td><input type="text" id="x" value="0"/></td>
+				</tr>
+				<tr>
+					<td><label> 높이: </label></td>
+					<td><input type="text" id="y" value="0"/></td>
+				</tr>
+			</table>
+			<button type="submit" id="rectangle"> 만들기 </button>
+		</div>
+		<div class="menu">
+			<h2>삼각형</h2>
+			<table>
+				<tr>
+					<td><label> 꼭지점A: </label></td>
+					<td><input type="text" id="a" value="x, y"/></td>
+				</tr>
+				<tr>
+					<td><label> 꼭지점B: </label></td>
+					<td><input type="text" id="b" value="x, y"/></td>
+				</tr>
+				<tr>
+					<td><label> 꼭지점C: </label></td>
+					<td><input type="text" id="c" value="x, y"/></td>
+				</tr>
+			</table>
+			<button type="submit" id="triangle"> 만들기 </button>
+		</div>
+	</div>
+	
+	<div class="board">
+		<svg width="100%" height="100%">
+		</svg>
+	</div>
+	<script>
+		var svg = new Svg(document.getElementsByTagName("svg")[0]);
+		new ButtonCircle(svg, document.getElementById("circle"));
+		new ButtonRectangle(svg, document.getElementById("rectangle"));
+		new ButtonTriangle(svg, document.getElementById("triangle"));
+	</script>
+</body>
+
+
+</html>

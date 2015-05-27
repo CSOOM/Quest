@@ -1,0 +1,259 @@
+var figures = [];
+
+document.onkeydown = function(e){
+	for( var i=0 ; i<figures.length ; i++){
+		if(figures[i].active==1){
+			if(e.keyCode == 37){//left
+				if(figures[i].type == "circle"){
+					figures[i].dom.cx.baseVal.value -= 1;
+				}else if(figures[i].type == "rectangle"){
+					figures[i].dom.x.baseVal.value -= 1
+				}else{
+					//triangle
+				}
+			}else if(e.keyCode == 38){//up
+				if(figures[i].type == "circle"){
+					figures[i].dom.cy.baseVal.value -= 1;
+				}else if(figures[i].type == "rectangle"){
+					figures[i].dom.y.baseVal.value -= 1
+				}else{
+					//triangle
+				}
+			}else if(e.keyCode == 39){//right
+				if(figures[i].type == "circle"){
+					figures[i].dom.cx.baseVal.value += 1;
+				}else if(figures[i].type == "rectangle"){
+					figures[i].dom.x.baseVal.value += 1
+				}else{
+					//triangle
+				}
+			}else if(e.keyCode == 40){//down
+				if(figures[i].type == "circle"){
+					figures[i].dom.cy.baseVal.value += 1;
+				}else if(figures[i].type == "rectangle"){
+					figures[i].dom.y.baseVal.value += 1
+				}else{
+					//triangle
+				}
+			}else if(e.keyCode == 46){//delete
+				figures[i].svg.dom.removeChild(figures[i].dom);
+				figures.splice(i,1);
+				i--;
+			}else{
+				//nothing
+			}
+		}else{
+			//nothing			
+		}
+	}
+}
+
+
+var Svg = function(dom){
+	this.dom = dom;
+};
+
+var Circle = function(svg, r){
+	this.svg = svg;
+	this.r = r;
+	this.active = 0;
+	this.type = "circle";
+
+	figures.push(this);
+
+	this._initialize();
+};
+
+var _ = Circle.prototype;
+
+_._initialize = function(){
+	this._setDom();
+	this._bindEvents();
+};
+
+_._setDom = function(){
+	var svgns = "http://www.w3.org/2000/svg";
+	this.dom = document.createElementNS(svgns, "circle");
+	this.dom.setAttribute("r", this.r);
+	this.dom.setAttribute("cx", this.r*1 + 10);
+	this.dom.setAttribute("cy", this.r*1 + 10);
+	this.dom.style.fill="red";
+
+	this.svg.dom.appendChild(this.dom);
+};
+
+_._bindEvents = function(){
+	var that = this;
+
+	this.dom.ondblclick = function(){
+		if(that.active == 1) { //비활성화시키기
+			that.active = 0;
+			that.dom.style.stroke="none";
+		}else{ //활성화시키기
+			that.active = 1;
+			that.dom.style.stroke="#eed570";
+			that.dom.style.strokeWidth=5;
+			that.dom.style.strokeOpacity=0.8;
+		}
+	}
+
+	
+
+
+};
+
+var Rectangle = function(svg, x, y){
+	this.svg = svg;
+	this.width = x;
+	this.height = y;
+	this.active = 0;
+	this.type = "rectangle";
+
+	figures.push(this);
+
+	this._initialize();
+};
+
+var _ = Rectangle.prototype;
+
+_._initialize = function(){
+	this._setDom();
+	this._bindEvents();
+};
+
+_._setDom = function(){
+	var svgns = "http://www.w3.org/2000/svg";
+	this.dom = document.createElementNS(svgns, "rect");
+	this.dom.setAttribute("width", this.width);
+	this.dom.setAttribute("height", this.height);
+	this.dom.setAttribute("x", 10);
+	this.dom.setAttribute("y", 10);
+	this.dom.style.fill="red";
+
+	this.svg.dom.appendChild(this.dom);
+};
+
+_._bindEvents = function(){
+	var that = this;
+
+	this.dom.ondblclick = function(){
+		if(that.active == 1) { //비활성화
+			that.active = 0;
+			that.dom.style.stroke="none";
+		}else{ //활성화
+			that.active = 1;
+			that.dom.style.stroke="#eed570";
+			that.dom.style.strokeWidth=5;
+			that.dom.style.strokeOpacity=0.8;
+		}
+	}
+
+
+};
+
+var Triangle = function(svg, point_a, point_b, point_c){
+	this.svg = svg;
+	this.point_a = point_a;
+	this.point_b = point_b;
+	this.point_c = point_c;
+	this.active = 0;
+	this.type = "triangle";
+
+	figures.push(this);
+
+	this._initialize();
+};
+
+var _ = Triangle.prototype;
+
+_._initialize = function(){
+	this._setDom();
+	this._bindEvents();
+};
+
+_._setDom = function(){
+	var svgns = "http://www.w3.org/2000/svg";
+	this.dom = document.createElementNS(svgns, "polygon");
+	var points = this.point_a+" "+this.point_b+" "+this.point_c;
+	this.dom.setAttribute("points", points);
+	this.dom.style.fill="red";
+
+	this.svg.dom.appendChild(this.dom);
+};
+
+_._bindEvents = function(){
+	var that = this;
+
+	this.dom.ondblclick = function(){
+		if(that.active == 1) { //비활성화
+			that.active = 0;
+			that.dom.style.stroke="none";
+		}else{ //활성화
+			that.active = 1;
+			that.dom.style.stroke="#eed570";
+			that.dom.style.strokeWidth=5;
+			that.dom.style.strokeOpacity=0.8;
+		}
+	}
+
+
+};
+
+//Buttons//////////////////////////////////////////////////////////////////////////////////////
+
+var ButtonCircle = function(svg, dom){
+	this.dom = dom;
+	this.svg = svg;
+
+	this._bindEvents();
+};
+
+var _ = ButtonCircle.prototype;
+
+_._bindEvents = function(){
+	var that = this;
+	this.dom.onclick = function(){
+		var r = document.getElementById("r").value;
+		new Circle(that.svg, r);
+		console.log("new circle");
+	}
+};
+
+var ButtonRectangle = function(svg, dom){
+	this.dom = dom;
+	this.svg = svg;
+
+	this._bindEvents();
+};
+
+var _ = ButtonRectangle.prototype;
+
+_._bindEvents = function(){
+	var that = this;
+	this.dom.onclick = function(){
+		var x = document.getElementById("x").value;
+		var y = document.getElementById("y").value;
+		new Rectangle(that.svg, x, y);
+		console.log("new rectangle");
+	}
+};
+
+var ButtonTriangle = function(svg, dom){
+	this.dom = dom;
+	this.svg = svg;
+
+	this._bindEvents();
+};
+
+var _ = ButtonTriangle.prototype;
+
+_._bindEvents = function(){
+	var that = this;
+	this.dom.onclick = function(){
+		var point_a = document.getElementById("a").value;
+		var point_b = document.getElementById("b").value;
+		var point_c = document.getElementById("c").value;
+		new Triangle(that.svg, point_a, point_b, point_c);
+		console.log("new triangle");
+	}
+};
