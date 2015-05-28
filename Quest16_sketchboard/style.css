@@ -5,6 +5,7 @@
 	left: 0px;
 	height: 70px;
 	padding: 0px;
+	margin: 0px;
 	background-color: #1891c5;
 	color: white;
 }
@@ -20,6 +21,8 @@
 	left: 0px;
 	bottom: 0px;
 	width: 300px;
+	margin: 0px;
+	padding: 0px;
 	background-color: #70c8ee;
 	color: #105f80;
 }
@@ -30,6 +33,8 @@
 	left: 300px;
 	right: 0px;
 	bottom: 0px;
+	margin: 0px;
+	padding: 0px;
 	background-color: #e2f4fb;
 }
 

@@ -9,7 +9,23 @@ document.onkeydown = function(e){
 				}else if(figures[i].type == "rectangle"){
 					figures[i].dom.x.baseVal.value -= 1
 				}else{
-					//triangle
+					var x_a = (figures[i].point_a).split(",")[0];
+					var y_a = (figures[i].point_a).split(",")[1];
+					x_a = x_a*1 - 1;
+					figures[i].point_a = x_a + "," +y_a;
+
+					var x_b = (figures[i].point_b).split(",")[0];
+					var y_b = (figures[i].point_b).split(",")[1];
+					x_b = x_b*1 - 1;
+					figures[i].point_b = x_b + "," +y_b;
+
+					var x_c = (figures[i].point_c).split(",")[0];
+					var y_c = (figures[i].point_c).split(",")[1];
+					x_c = x_c*1 - 1;
+					figures[i].point_c = x_c + "," +y_c;
+
+					var points = figures[i].point_a+" "+figures[i].point_b+" "+figures[i].point_c;
+					figures[i].dom.setAttribute("points", points);
 				}
 			}else if(e.keyCode == 38){//up
 				if(figures[i].type == "circle"){
@@ -17,7 +33,23 @@ document.onkeydown = function(e){
 				}else if(figures[i].type == "rectangle"){
 					figures[i].dom.y.baseVal.value -= 1
 				}else{
-					//triangle
+					var x_a = (figures[i].point_a).split(",")[0];
+					var y_a = (figures[i].point_a).split(",")[1];
+					y_a = y_a*1 - 1;
+					figures[i].point_a = x_a + "," +y_a;
+
+					var x_b = (figures[i].point_b).split(",")[0];
+					var y_b = (figures[i].point_b).split(",")[1];
+					y_b = y_b*1 - 1;
+					figures[i].point_b = x_b + "," +y_b;
+
+					var x_c = (figures[i].point_c).split(",")[0];
+					var y_c = (figures[i].point_c).split(",")[1];
+					y_c = y_c*1 - 1;
+					figures[i].point_c = x_c + "," +y_c;
+
+					var points = figures[i].point_a+" "+figures[i].point_b+" "+figures[i].point_c;
+					figures[i].dom.setAttribute("points", points);
 				}
 			}else if(e.keyCode == 39){//right
 				if(figures[i].type == "circle"){
@@ -25,7 +57,23 @@ document.onkeydown = function(e){
 				}else if(figures[i].type == "rectangle"){
 					figures[i].dom.x.baseVal.value += 1
 				}else{
-					//triangle
+					var x_a = (figures[i].point_a).split(",")[0];
+					var y_a = (figures[i].point_a).split(",")[1];
+					x_a = x_a*1 + 1;
+					figures[i].point_a = x_a + "," +y_a;
+
+					var x_b = (figures[i].point_b).split(",")[0];
+					var y_b = (figures[i].point_b).split(",")[1];
+					x_b = x_b*1 + 1;
+					figures[i].point_b = x_b + "," +y_b;
+
+					var x_c = (figures[i].point_c).split(",")[0];
+					var y_c = (figures[i].point_c).split(",")[1];
+					x_c = x_c*1 + 1;
+					figures[i].point_c = x_c + "," +y_c;
+
+					var points = figures[i].point_a+" "+figures[i].point_b+" "+figures[i].point_c;
+					figures[i].dom.setAttribute("points", points);
 				}
 			}else if(e.keyCode == 40){//down
 				if(figures[i].type == "circle"){
@@ -33,7 +81,23 @@ document.onkeydown = function(e){
 				}else if(figures[i].type == "rectangle"){
 					figures[i].dom.y.baseVal.value += 1
 				}else{
-					//triangle
+					var x_a = (figures[i].point_a).split(",")[0];
+					var y_a = (figures[i].point_a).split(",")[1];
+					y_a = y_a*1 + 1;
+					figures[i].point_a = x_a + "," +y_a;
+
+					var x_b = (figures[i].point_b).split(",")[0];
+					var y_b = (figures[i].point_b).split(",")[1];
+					y_b = y_b*1 + 1;
+					figures[i].point_b = x_b + "," +y_b;
+
+					var x_c = (figures[i].point_c).split(",")[0];
+					var y_c = (figures[i].point_c).split(",")[1];
+					y_c = y_c*1 + 1;
+					figures[i].point_c = x_c + "," +y_c;
+
+					var points = figures[i].point_a+" "+figures[i].point_b+" "+figures[i].point_c;
+					figures[i].dom.setAttribute("points", points);
 				}
 			}else if(e.keyCode == 46){//delete
 				figures[i].svg.dom.removeChild(figures[i].dom);
