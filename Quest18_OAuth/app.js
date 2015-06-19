@@ -55,11 +55,20 @@ app.get('/oauth2callback', function(req, res) {
   	res.render('index.jade', locals);
 });
 
+var my_profile = {};
+
 var getData = function() {
 	gapi.oauth.userinfo.get().withAuthClient(gapi.client).execute(function(err, results){
     	console.log(results);
 	});
+
+	console.log(gapi.plus);
+/*
 	gapi.cal.calendarList.list().withAuthClient(gapi.client).execute(function(err, results){
     	console.log(results);
-	});
+  	});
+*/
+//	console.log(gapi.cal.events.list());
+//	console.log(gapi.cal.calendarList.list());
+
 };

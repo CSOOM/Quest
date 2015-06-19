@@ -4,7 +4,9 @@ var googleapis = require('googleapis'),
     secret = 'mI1YC6eKZJWjXBvehdsreZnS',
     redirect = 'http://localhost:3000/oauth2callback';
 
-oauth2Client = new OAuth2Client(client, secret, redirect);
+var oauth2Client = new OAuth2Client(client, secret, redirect);
+//var oauth2 = googleapis.oauth2('v2');
+//var calendar = googleapis.calendar('v3');
 /*
 var url = oauth2Client.generateAuthUrl({
 	access_type: 'offline',
@@ -16,31 +18,37 @@ var calendar_auth_url = oauth2Client.generateAuthUrl({
 	scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar'
 });
 
+var profile_auth_url = oauth2Client.generateAuthUrl({
+	access_type: 'offline',
+	scope: 'https://www.googleapis.com/auth/plus.me'
+});
+
 exports.ping = function() {
     console.log('pong');
 };
 
 
 //------------------------------------------
-/*
-googleapis
-  .discover('calendar', 'v3')
-  .discover('oauth2', 'v2')
-  .execute(function(err, client){
-    if(!err)
-      callback(client);
-  });
-
 var callback = function(clients) {
-  console.log(clients);
-  exports.cal = clients.calendar;
-  exports.oauth = clients.oauth2;
-  exports.client = oauth2Client;
-  exports.url = calendar_auth_url;
+	exports.cal = clients.calendar;
+	exports.oauth = clients.oauth2;
+	exports.plus = clients.plus;
+	exports.client = oauth2Client;
+	//exports.url = calendar_auth_url;
+	exports.url = profile_auth_url;
 };
-*/
 
-exports.cal = client.calendar;
-exports.oauth = client.oauth2;
-exports.url = calendar_auth_url;
-exports.client = oauth2Client;
+
+googleapis
+	.discover('calendar', 'v3')
+	.discover('plus', 'v1')
+	.discover('oauth2', 'v2')
+	.execute(function(err, client){
+		if(!err){
+			callback(client);
+		}
+});
+
+
+
+
