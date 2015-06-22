@@ -61,8 +61,14 @@ var getData = function() {
 	gapi.oauth.userinfo.get().withAuthClient(gapi.client).execute(function(err, results){
     	console.log(results);
 	});
-
+/*
+  gapi.plus.peole.get().withAuthClient(gapi.client).execute(function(err, results){
+      console.log(results);
+  });
+*/
 	console.log(gapi.plus);
+  console.log(gapi.plus.people);
+  console.log(gapi.plus.people.get());
 /*
 	gapi.cal.calendarList.list().withAuthClient(gapi.client).execute(function(err, results){
     	console.log(results);

@@ -1,7 +1,9 @@
+var secret = require('./secret.json');
+
 var googleapis = require('googleapis'),
     OAuth2Client = googleapis.auth.OAuth2,
-    client = '265249425724-cv6oab62v0uh031n8k2ddiqjl1vsssho.apps.googleusercontent.com',
-    secret = 'mI1YC6eKZJWjXBvehdsreZnS',
+    client = secret.consumerKey,
+    secret = secret.consumerSecret,
     redirect = 'http://localhost:3000/oauth2callback';
 
 var oauth2Client = new OAuth2Client(client, secret, redirect);
@@ -20,7 +22,7 @@ var calendar_auth_url = oauth2Client.generateAuthUrl({
 
 var profile_auth_url = oauth2Client.generateAuthUrl({
 	access_type: 'offline',
-	scope: 'https://www.googleapis.com/auth/plus.me'
+	scope: 'https://www.googleapis.com/auth/plus.login'
 });
 
 exports.ping = function() {
