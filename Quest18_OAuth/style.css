@@ -1,0 +1,25 @@
+.title {
+	position: absolute;
+	left: 30px;
+	top: 10px;
+	height: 60px;
+}
+
+.content {
+	position: absolute;
+	top: 100px;
+	left: 30px;
+	width: 85%;
+}
+
+.content.birth{
+	width: 30%;
+}
+
+p {
+	font-size: 17px;
+}
+
+h1 {
+	font-weight: bold;
+}

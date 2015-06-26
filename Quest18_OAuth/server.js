@@ -7,7 +7,6 @@ var secret = require('./secret.json');
 var passport = require('passport');
 var mysql = require('mysql');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-//var LocalStrategy = require('passport-local').Strategy;
 
 app.use(express.methodOverride());
 app.use(express.cookieParser());
@@ -37,21 +36,9 @@ passport.serializeUser(function(user, done) {
 });
  
 passport.deserializeUser(function(user, done) {
-    //findById(id, function (err, user) {
     console.log('deserialize');
     done(null, user);
-    //});
 });
-/*
-passport.use(new LocalStrategy({
-    usernameField: 'userid',
-    passwordField: 'password'
-  },
-  function(username, password, done) {
-
-  }
-));
-*/
 
 
 passport.use(new GoogleStrategy({
@@ -80,31 +67,19 @@ app.get('/auth/google',
 app.get('/oauth2callback', 
 	passport.authenticate('google', { successRedirect: '/signup', failureRedirect: '/' }));
 
-
-/*
-app.get('/login_success', ensureAuthenticated, function (req, res){
-    res.send(req.user);
+app.get('/style.css', function (request, response){
+	fs.readFile('style.css', function(error, data){
+		response.writeHead(200, {"Content-Type": "text/css"});
+    	response.write(data);
+    	response.end();
+	});
 });
-
-app.get('/login_fail', function (req, res){
-
-});
-
-function ensureAuthenticated (req, res, next) {
-    // 로그인이 되어 있으면, 다음 파이프라인으로 진행
-    if (req.isAuthenticated()) { return next(); }
-    // 로그인이 안되어 있으면, login 페이지로 진행
-    res.redirect('/');
-};
-*/
-
 
 app.post('/login', function (request, response){
 	var query = 'SELECT birthday FROM User WHERE id = ? AND password = ?';
 
 	db.query(query, [request.param('userid'), request.param('password')],
 	function (error, result){
-		console.log(result);
 		if(result.length == 0){
 			fs.readFile('login_fail.html', 'utf8', function (error, data) {
 		        response.writeHead(200, {'Content-Type': 'text/html'});
@@ -131,7 +106,6 @@ app.get('/signup', function (request, response){
 });
 
 app.post('/signup_success', function (request, response){
-	console.log(request.user); //birthday
 	var query = 'INSERT INTO User(id, password, birthday) VALUES (?, ?, ?);';
 	
 	db.query(query, [request.param('userid'), request.param('password'), request.user], 
@@ -155,9 +129,3 @@ app.post('/signup_success', function (request, response){
 });
 
 
-/*
-app.get('/logout', function (request, response){
-    request.logout();
-    response.redirect('/');
-});
-*/
